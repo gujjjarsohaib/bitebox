@@ -1,0 +1,188 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BiteBox - Food Ordering</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <header class="navbar">
+        <a href="#" class="logo">Bite<span>Box.</span></a>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#menu">Our Menu</a>
+            <a href="#about">About</a>
+        </nav>
+
+        <button class="cart-button" onclick="toggleCart()">
+            🛒 Cart <span id="cart-count">0</span>
+        </button>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <p class="tagline">FRESH FOOD, HAPPY MOOD</p>
+            <h1>Good Food.<br>Good Mood.</h1>
+            <p>
+                Delicious meals made fresh and delivered
+                straight to your doorstep.
+            </p>
+            <a href="#menu" class="main-button">Explore Menu</a>
+        </div>
+
+        <div class="hero-image">
+            <div class="food-circle">🍔</div>
+            <span class="floating-food">🍟</span>
+            <span class="floating-drink">🥤</span>
+        </div>
+    </section>
+
+    <!-- Main Menu -->
+    <main class="container" id="menu">
+
+        <div class="section-heading">
+            <div>
+                <p class="tagline">WHAT WE OFFER</p>
+                <h2>Explore Our Menu</h2>
+                <p>Choose your favourite meal today.</p>
+            </div>
+        </div>
+
+        <!-- Search -->
+        <div class="search-box">
+            <input
+                type="text"
+                id="search-input"
+                placeholder="Search your favourite food..."
+            >
+        </div>
+
+        <!-- Categories -->
+        <div class="categories">
+            <button class="category-btn active"
+                onclick="filterFood('All', this)">All</button>
+
+            <button class="category-btn"
+                onclick="filterFood('Burger', this)">🍔 Burgers</button>
+
+            <button class="category-btn"
+                onclick="filterFood('Pizza', this)">🍕 Pizza</button>
+
+            <button class="category-btn"
+                onclick="filterFood('Chicken', this)">🍗 Chicken</button>
+
+            <button class="category-btn"
+                onclick="filterFood('Drinks', this)">🥤 Drinks</button>
+        </div>
+
+        <!-- Food Items -->
+        <div class="food-grid" id="food-grid"></div>
+
+    </main>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <h2>Why Choose BiteBox?</h2>
+        <p>
+            We believe good food brings people together.
+            Enjoy fresh meals, simple ordering and great taste
+            with BiteBox.
+        </p>
+        <div class="about-features">
+            <div>🥗 Fresh Ingredients</div>
+            <div>⚡ Quick Ordering</div>
+            <div>❤️ Made With Care</div>
+        </div>
+    </section>
+
+    <!-- Shopping Cart -->
+    <div class="cart-overlay" id="cart-overlay"
+        onclick="closeCart()"></div>
+
+    <aside class="cart-panel" id="cart-panel">
+        <div class="cart-header">
+            <h2>Your Cart 🛒</h2>
+            <button class="close-btn" onclick="closeCart()">✕</button>
+        </div>
+
+        <div id="cart-items"></div>
+
+        <div class="cart-footer">
+            <div class="total-row">
+                <span>Total Amount</span>
+                <strong id="cart-total">Rs. 0</strong>
+            </div>
+            <button class="checkout-btn" onclick="openCheckout()">
+                Proceed to Checkout
+            </button>
+        </div>
+    </aside>
+
+    <!-- Checkout Form -->
+    <div class="modal" id="checkout-modal">
+        <div class="modal-content">
+            <button class="close-btn modal-close"
+                onclick="closeCheckout()">✕</button>
+
+            <h2>Complete Your Order</h2>
+            <p>Enter your delivery details below.</p>
+
+            <form id="checkout-form">
+                <label>Full Name</label>
+                <input type="text" id="customer-name"
+                    placeholder="Enter your name" required>
+
+                <label>Phone Number</label>
+                <input type="tel" id="customer-phone"
+                    placeholder="03XXXXXXXXX"
+                    pattern="03[0-9]{9}" required>
+
+                <label>Delivery Address</label>
+                <textarea id="customer-address"
+                    placeholder="Enter your complete address"
+                    required></textarea>
+
+                <label>Payment Method</label>
+                <select id="payment-method" required>
+                    <option value="Cash on Delivery">
+                        Cash on Delivery
+                    </option>
+                    <option value="Demo Online Payment">
+                        Demo Online Payment
+                    </option>
+                </select>
+
+                <button type="submit" class="checkout-btn">
+                    Place My Order
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Order Confirmation -->
+    <div class="modal" id="success-modal">
+        <div class="modal-content success-content">
+            <div class="success-icon">✓</div>
+            <h2>Order Placed!</h2>
+            <p id="order-message">
+                Thank you for ordering with BiteBox.
+            </p>
+            <button class="checkout-btn"
+                onclick="closeSuccess()">Continue Shopping</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 BiteBox. All Rights Reserved.</p>
+        <p>Made with ❤️ for food lovers.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
